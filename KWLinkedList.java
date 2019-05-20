@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 /**
  * Class KWLinkedList implements a double linked list and
  * a ListIterator.
+ * @param <E>
  **/
 public class KWLinkedList<E> extends AbstractSequentialList<E> {
     // Data Fields
@@ -59,6 +60,7 @@ public class KWLinkedList<E> extends AbstractSequentialList<E> {
      * Return an Iterator to the list
      * @return an Itertor to the list
      */
+    @Override
     public Iterator<E> iterator() {
         return new KWListIter(0);
     }
@@ -67,6 +69,7 @@ public class KWLinkedList<E> extends AbstractSequentialList<E> {
      * Return a ListIterator to the list
      * @return a ListItertor to the list
      */
+    @Override
     public ListIterator<E> listIterator() {
         return new KWListIter(0);
     }
@@ -75,6 +78,7 @@ public class KWLinkedList<E> extends AbstractSequentialList<E> {
      * @param index - The position the iteration is to begin
      * @return a ListIterator that begins at index
      */
+    @Override
     public ListIterator<E> listIterator(int index) {
         return new KWListIter(index);
     }
@@ -269,11 +273,11 @@ public class KWLinkedList<E> extends AbstractSequentialList<E> {
         @Override
         public void add(E obj) {
             if (head == null) { // Add to an empty list.
-                head = new Node<E>(obj);
+                head = new Node<>(obj);
                 tail = head;
             } else if (nextItem == head) { // Insert at head.
                 // Create a new node.
-                Node<E> newNode = new Node<E>(obj);
+                Node<E> newNode = new Node<>(obj);
                 // Link it to the nextItem.
                 newNode.next = nextItem; // Step 1
                 // Link nextItem to the new node.
@@ -282,7 +286,7 @@ public class KWLinkedList<E> extends AbstractSequentialList<E> {
                 head = newNode; // Step 3
             } else if (nextItem == null) { // Insert at tail.
                 // Create a new node.
-                Node<E> newNode = new Node<E>(obj);
+                Node<E> newNode = new Node<>(obj);
                 // Link the tail to the new node.
                 tail.next = newNode; // Step 1
                 // Link the new node to the tail.
@@ -291,7 +295,7 @@ public class KWLinkedList<E> extends AbstractSequentialList<E> {
                 tail = newNode; // Step 3
             } else { // Insert into the middle.
                 // Create a new node.
-                Node<E> newNode = new Node<E>(obj);
+                Node<E> newNode = new Node<>(obj);
                 // Link it to nextItem.prev.
                 newNode.prev = nextItem.prev; // Step 1
                 nextItem.prev.next = newNode; // Step 2
@@ -440,10 +444,10 @@ public class KWLinkedList<E> extends AbstractSequentialList<E> {
     /** Static method to provide solution to exercise */
     public static void exercise_2_6_1() {
         // Create figure 2.20
-        Node tom = new Node<String>("Tom");
-        Node dick = new Node<String>("Dick");
-        Node harry = new Node<String>("Harry");
-        Node sam = new Node<String>("Sam");
+        Node tom = new Node<>("Tom");
+        Node dick = new Node<>("Dick");
+        Node harry = new Node<>("Harry");
+        Node sam = new Node<>("Sam");
         tom.next = dick;
         dick.prev = tom;
         dick.next = harry;
@@ -453,7 +457,7 @@ public class KWLinkedList<E> extends AbstractSequentialList<E> {
         Node<String> head = tom;
         Node<String> tail = sam;
         // Insert "Bill" before "Tom"
-        Node<String> bill = new Node<String>("Bill");
+        Node<String> bill = new Node<>("Bill");
         bill.next = tom;
         bill.prev = tom;
         head = tom;

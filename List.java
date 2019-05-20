@@ -10,7 +10,7 @@ public class List
 {
     public static void main(String[] args)
     {
-        Collection<String> textCollection1 = new KWArrayList<String>();
-        Collection<String> testCollection2 = new KWLinkedList<String>();
+        Collection<String> textCollection1 = new KWArrayList<>();
+        Collection<String> testCollection2 = new KWLinkedList<>();
     }
 }
